@@ -163,14 +163,14 @@ class selectRegister:
         
         return df_final
     
-    def saveToCsv(self):
+    def saveToCsv(self, path):
         Cutoff = self.Cutoff
         
         df_final = self.finalDF()
         date = df_final["datetime"].dt.strftime('%Y_%m-%d').dropna()
         date = date.array
         
-        filename = "outputs/DataRecord_"+date[0]+"_to_"+date[-1]+".csv"
+        filename = path+"/DataRecord_"+date[0]+"_to_"+date[-1]+".csv"
         print(filename+ " is saved in path "+str(os.getcwd())+"\outputs")
         df_final.to_csv(filename, index=False)
         
